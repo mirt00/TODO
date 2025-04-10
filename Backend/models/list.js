@@ -1,4 +1,5 @@
  const mongoose = require("mongoose");
+const user = require("./user");
  const listSchema = new mongoose.Schema({
     title:{
         type:String,
@@ -8,7 +9,7 @@
         type: String,
         require: true,
     },
-    list:[
+    user:[
         {
         type: mongoose.Types.ObjectId,
         ref: "User",
