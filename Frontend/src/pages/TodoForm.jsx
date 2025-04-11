@@ -1,17 +1,32 @@
 import React, { useState } from "react";
+import axios from "axios";
 
-export default function TodoForm({ onAdd }) {
+import { useNavigate, useParams } from "react-router-dom";
+
+export default function TodoForm() {
+    const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [label, setLabel] = useState("Home");
   const [status, setStatus] = useState("Pending"); // default status
-
-  const handleSubmit = (e) => {
+const email = localStorage.getItem("token");
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(label);
     if (!title.trim() || !body.trim()) return;
-    onAdd({ title, body, status });
-    setTitle("");
-    setBody("");
-    setStatus("Pending");
+
+    try {
+      await axios.post(`http://localhost:3000/api/v/addTask/`, {
+        title,
+        body,
+        label,
+        email,
+      });
+
+      navigate("/todolist"); // Redirect to task list page after updating
+    } catch (error) {
+      console.error("Error updating task:", error);
+    }
   };
 
   return (
@@ -51,6 +66,21 @@ export default function TodoForm({ onAdd }) {
               <option value="Pending">⏳ Pending</option>
               <option value="In Progress">🔄 In Progress</option>
               <option value="Completed">✅ Completed</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block mb-1 text-sm font-semibold text-gray-700">label</label>
+            <select 
+              className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+              value={label}
+              onChange={(e) => setLabel(e.target.value)}
+            >
+              <option value="Home">Home</option>
+              <option  value="Gym">Gym</option>
+              <option value="Market">Market</option>
+              <option value="Study">Study</option>
+              <option value="Project">Project</option>
             </select>
           </div>
 

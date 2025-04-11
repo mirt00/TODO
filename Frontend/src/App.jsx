@@ -7,15 +7,20 @@ import TodoForm from './pages/TodoForm.jsx'
 import Todolist from './pages/Todolist.jsx'
 import { Routes, Route, Link } from "react-router-dom";
 import Login from './pages/LoginPage.jsx'
+import TodoEdit from './pages/TodoEdit.jsx'
+import Signup from './pages/Signup.jsx'
+import HomePage from './pages/HomePage.jsx'
 function App() {
   return (
     <div>
       <Navbar />
       <Routes>
         <Route path="/add" element={<TodoForm />} />
- 	<Route path="/" element={<Todolist />} />
- 	<Route path="/Login" element={<Login />} />
-
+        <Route path="/todolist" element={<Todolist />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/updateTask/:taskId" element={<TodoEdit />} />
       </Routes>
     </div>
   );

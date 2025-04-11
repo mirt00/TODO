@@ -3,16 +3,21 @@ const user = require("./user");
  const listSchema = new mongoose.Schema({
     title:{
         type:String,
-        require: true,
+        required: true,
     },
     body:{
         type: String,
-        require: true,
+        required: true,
     },
     status:{
         type: String,
         default: "Pending",
-        require: true,
+        required: true,
+    },
+    label:{
+        type: String,
+        default: "Home",
+        required: true,
     },
     user:[
         {
