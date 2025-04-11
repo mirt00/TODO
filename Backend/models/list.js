@@ -9,6 +9,11 @@ const user = require("./user");
         type: String,
         require: true,
     },
+    status:{
+        type: String,
+        default: "Pending",
+        require: true,
+    },
     user:[
         {
         type: mongoose.Types.ObjectId,

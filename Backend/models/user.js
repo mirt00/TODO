@@ -6,7 +6,6 @@
     },
     username:{
         type: String,
-        
         require: true,
     },
     password:{

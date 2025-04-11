@@ -4,7 +4,7 @@ const List = require("../models/list");
 //Create
 router.post("/addTask", async (req, res) => {
     try {
-        const{title, body, email}= req.body;
+        const{title, body,status, email}= req.body;
     const existingUser = await User.findOne({email});
     if(existingUser){
         const list = new List({title, body, user:existingUser});
