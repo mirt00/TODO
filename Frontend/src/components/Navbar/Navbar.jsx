@@ -8,7 +8,7 @@ const NavBar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("email");
+    localStorage.removeItem("userId");
     console.log("Logged out successfully");
     navigate("/");
   };

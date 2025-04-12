@@ -6,7 +6,7 @@ const Login = () => {
     const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const handleSignup = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     if (!email.trim() || !password.trim()) return;
@@ -16,13 +16,14 @@ const Login = () => {
         email,
         password,
       });
+      console.log("login response", res.data)
 console.log("login success")
 
 localStorage.setItem("token", res.data.user.email);
 localStorage.setItem("userId", res.data.user._id);
 console.log("token", res.data.user)
 
-console.log(res.data)
+
       navigate("/"); // Redirect to task list page after updating
     } catch (error) {
       console.error("Error logging in: ", error);
@@ -33,7 +34,7 @@ console.log(res.data)
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-100 to-green-200 px-4">
       <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-xl">
         <h2 className="text-3xl font-bold text-center text-green-700 mb-6">📝 Login</h2>
-        <form onSubmit={handleSignup} className="space-y-5">
+        <form onSubmit={handleLogin} className="space-y-5">
 
 
           <div>

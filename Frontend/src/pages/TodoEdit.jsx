@@ -38,7 +38,8 @@ export default function EditTask() {
     try {
       await axios.put(`http://localhost:3000/api/v/updateTask/${taskId}`, {
         title,
-        body,
+        label,
+        body, 
         status,
       });
 

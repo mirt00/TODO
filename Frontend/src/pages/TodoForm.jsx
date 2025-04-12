@@ -23,9 +23,9 @@ const email = localStorage.getItem("token");
         email,
       });
 
-      navigate("/todolist"); // Redirect to task list page after updating
+      navigate("/todolist"); 
     } catch (error) {
-      console.error("Error updating task:", error);
+      console.error("Error adding task:", error);
     }
   };
 

@@ -6,7 +6,7 @@ const auth = require("./routes/auth")
 const list = require("./routes/list")
 app.use(cors({
     origin: "http://localhost:5173", // Allow your frontend origin
-    // credentials: true // Optional: if you're using cookies/auth
+    credentials: true // Optional: if you're using cookies/auth
   }));
 app.get("/", (req, res) => {
     res.send("hello");
